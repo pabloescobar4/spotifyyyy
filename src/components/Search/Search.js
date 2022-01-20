@@ -1,8 +1,8 @@
 import React from 'react'
-import SearchData from './SearchData'
-import './Search.css'
-import SpPlayer from './ShanPlayer';
-import { TrackSearchResult } from './TrackSearchResult'
+import SearchData from '../SearchData'
+// import './Search.css'
+import SpPlayer from '../ShanPlayer';
+import { TrackSearchResult } from '../TrackSearchResult'
 import {
 
 	faChevronLeft,

@@ -6,7 +6,7 @@ import Player1 from "./components/Player1";
 import Spotify from "./components/Newplayer";
 import Spotify1 from "./components/SearchPage";
 import {Route,Routes,Link} from 'react-router-dom';
-import Search from "./components/Search";
+import Search from "./components/Searchnew1";
 
 function App() {
   const [songs] = useState([
@@ -915,15 +915,15 @@ function App() {
     //flex
     <div className="bg-black"> 
    <div className="flex">
-   <Routes>
+    <Routes>
        <Route path="/search" element={<div>
        <Spotify1 />
-       <Player1
+       {/* <Player1
         currentSongIndex={currentSongIndex}
         setCurrentSongIndex={setCurrentSongIndex}
         nextSongIndex={nextSongIndex}
         songs={songs}
-      />
+      /> */}
        </div>} />
        <Route path="/" element = {<div>
        <Spotify />
@@ -937,7 +937,8 @@ function App() {
        
 
     
-       </Routes>
+       </Routes> 
+       
        
    </div>
    
