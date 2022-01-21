@@ -12,6 +12,7 @@ import Spot from "./components/.Sidebar_new"
 import A2 from "./components/.Player_Only"
 import A1 from "./components/.Search_Player"
 import { Playlistpage } from "./components/Playlistpage";
+import { Landing } from "./components/Landing"
 
 function App() {
 
@@ -43,9 +44,21 @@ function App() {
         songs={songs}
       /> */}
        </div>}/>
+
+      
+
+
+
        <Route path="/playlist/:id" element={<div>
         <SideBar />
        <Playlistpage />
+       </div>
+     
+      } />
+       <Route path="/spotify" element={<div>
+       <Landing />
+
+     
        </div>
      
       } />

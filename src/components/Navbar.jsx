@@ -1,7 +1,10 @@
 import react, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import {GiHamburgerMenu} from "react-icons/gi"
-// import ScrollIntoView from "react-scroll-into-view";
+import { loginUrl}  from './Spotify'
+// import ScrollIntoVie w from "react-scroll-into-view";
+import { Link } from 'react-router-dom';
+
 export const Navbar=()=>{
   const [showNav, setShowNav] = useState(false);
 
@@ -45,7 +48,7 @@ export const Navbar=()=>{
         <div className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Sign in</div>
         </div>
         <div>
-        <div className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</div>
+        <Link to = {"/login"} className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</Link>
         </div>
       </ul>
     </nav>
