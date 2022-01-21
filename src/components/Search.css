@@ -1,8 +1,10 @@
-
 .sudo:focus {
-outline-width:0
+  outline-width: 0;
 }
-.abc{
-	top:130px;
+.abc {
+  top: 130px;
+}
 
+.output::-webkit-scrollbar {
+  display: none;
 }

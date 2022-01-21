@@ -1,31 +1,31 @@
-import React from 'react';
+import React from "react";
 // import SearchData from "./SearchData";
-import './Search.css';
-import SpPlayer from './ShanPlayer';
-import { TrackSearchResult } from './TrackSearchResult';
+import "./Search.css";
+import SpPlayer from "./ShanPlayer";
+import { TrackSearchResult } from "./TrackSearchResult";
 import {
   faChevronLeft,
   faChevronRight,
   faSearch,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SpotifyWebApi from 'spotify-web-api-node';
-import { useNavigate } from 'react-router-dom';
-import SearchData from './SearchData';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SpotifyWebApi from "spotify-web-api-node";
+import { useNavigate } from "react-router-dom";
+import SearchData from "./SearchData";
 const spotify = new SpotifyWebApi({
-  clientId: '4ecfc05c92c4453aaf10ea23d7553452',
+  clientId: "4ecfc05c92c4453aaf10ea23d7553452",
 });
 function Search() {
   const accessToken =
-    'BQA_-8OOxxubzmxXq_20EAgGIKpDtDYqFszKiHBEileb74F8pN773LyZ04PfPcEF5RceEzeFm5PHPDyGTeSe-8tMx1l9QhTJHnlM2j4nu6d8MbURxwpyW3NBStwpD1mtlKa3gGK8dxX6ROjoHjMJEzvbCNaZ8yqqw-fRx7sG5jkDInHCTZcRmBNzNSqj7TRoCVQjQgyAUinf6oL64wmzcA';
-  const [search, setSearch] = React.useState('');
+    "BQBbj70KQ7AG_3uQnTNjVW7PtIVpA2ZbzuqEP5UUJnjwaOsTH8516N1-WB-bHSNVU13Ul1Mb3HaV1YXc9rXr6Ws5mHh4st3iNHyQ94IceUBKXf6BlPntdJGfUR5fUf2wJC7ivTifSnBAIOWMoSOAdL0n8XwDyDmrCssqf1zzSS5bHdYmZ5TNEjv0vyudE1duweDOSaZHfbTK-OW83WWrYw";
+  const [search, setSearch] = React.useState("");
   const [playingTrack, setPlayingTrack] = React.useState();
   const [searchResults, setSearchResults] = React.useState([]);
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
     console.log(track);
-    setSearch('');
+    setSearch("");
   };
 
   React.useEffect(() => {
@@ -72,7 +72,7 @@ function Search() {
             color="white"
             className="m-1 ml-10 mt-2"
             onClick={() => navigate(-1)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           />
           <FontAwesomeIcon
             icon={faChevronRight}
@@ -80,7 +80,7 @@ function Search() {
             color="white"
             className="m-1 ml-8 mt-2"
             onClick={() => navigate(+1)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           />
 
           <form
@@ -105,8 +105,8 @@ function Search() {
               placeholder="Artists, Songs,podcasts"
             />
             <div
-              style={{ overflowY: 'scroll', height: '40vh', width: '25vw' }}
-              className="flex-grow-1 my-2  w-full h-1/6"
+              style={{ overflowY: "scroll", height: "40vh", width: "25vw" }}
+              className="flex-grow-1 my-2  w-full h-1/6 output"
             >
               {searchResults.map((track) => (
                 <TrackSearchResult
@@ -148,7 +148,7 @@ function Search() {
         </div>
         <div className=" w-1/5 h-3/5 p-5 m-6 ml-24 mt-10  hover: rounded-md ">
           <div className="p-1  ">
-            {search === '' ? (
+            {search === "" ? (
               <div className="text-white text-3xl font-sans font-bold">
                 Browse All
                 <div className="flex space-x-12 mt-5">
@@ -158,7 +158,9 @@ function Search() {
                   <SearchData />
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <div className="bg-black" style={{ height: "80vh" }}></div>
+            )}
           </div>
         </div>
 
