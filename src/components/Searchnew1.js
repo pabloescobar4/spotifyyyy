@@ -17,7 +17,7 @@ const spotify = new SpotifyWebApi({
 });
 function Search() {
   const accessToken =
-    "BQBbj70KQ7AG_3uQnTNjVW7PtIVpA2ZbzuqEP5UUJnjwaOsTH8516N1-WB-bHSNVU13Ul1Mb3HaV1YXc9rXr6Ws5mHh4st3iNHyQ94IceUBKXf6BlPntdJGfUR5fUf2wJC7ivTifSnBAIOWMoSOAdL0n8XwDyDmrCssqf1zzSS5bHdYmZ5TNEjv0vyudE1duweDOSaZHfbTK-OW83WWrYw";
+    "BQCG1jWsnpJg3v2otOlhzRGdUM63u2GfoxvqdbfzH0nMH7p5sv0a_Trfnq-dgf2hmc8-WuNrzCuKTESA5m305Azu4z4to1b4rMmJclhPUf28Gt_XJ0alF61gILYazV9HMfILpf4V_Ma_UZfpUVXAtz5bPeQ6jOdmFP2uLc-0rlE9NBa-PJV1N-1ilu9n9MU38qkZEIzCxXq4flSXnCkXLQ";
   const [search, setSearch] = React.useState("");
   const [playingTrack, setPlayingTrack] = React.useState();
   const [searchResults, setSearchResults] = React.useState([]);
