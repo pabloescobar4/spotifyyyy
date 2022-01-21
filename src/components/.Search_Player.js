@@ -1,5 +1,7 @@
 import React from "react";
 // import SearchData from "./SearchData";
+
+//Search + Player
 import "./Search.css";
 import SpPlayer from "./ShanPlayer";
 import { TrackSearchResult } from "./TrackSearchResult";
@@ -11,16 +13,29 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SpotifyWebApi from "spotify-web-api-node";
 import { useNavigate } from "react-router-dom";
-import SearchData from "./SearchData";
+import SearchData from "./Search/SearchData";
+
+
+
+
+
+
 const spotify = new SpotifyWebApi({
   clientId: "4ecfc05c92c4453aaf10ea23d7553452",
 });
 function Search() {
+
+
   const accessToken =
-    "BQCG1jWsnpJg3v2otOlhzRGdUM63u2GfoxvqdbfzH0nMH7p5sv0a_Trfnq-dgf2hmc8-WuNrzCuKTESA5m305Azu4z4to1b4rMmJclhPUf28Gt_XJ0alF61gILYazV9HMfILpf4V_Ma_UZfpUVXAtz5bPeQ6jOdmFP2uLc-0rlE9NBa-PJV1N-1ilu9n9MU38qkZEIzCxXq4flSXnCkXLQ";
+    "BQBFWtqt9kOzGQz5XGBUgIoRL080AjwZ9fG7mk7LBk3-i9Fu4U4ooys0iPqkWEWsTWZnrELSYufKASTrEudcVL7S7lS2GjROTbcEwGKLsjG-_FSFu_g4oyOfRGBtI-h4AsnOOtGpnvE_MGGgTlaSGwck0HbH1tXUU0IbucK-Y-VwFP-C0mEYscaVNk8o2JartnhEsx_-zP0RQxmo-GLptQ";
   const [search, setSearch] = React.useState("");
+
+
   const [playingTrack, setPlayingTrack] = React.useState();
   const [searchResults, setSearchResults] = React.useState([]);
+
+  const [playlist, setPlaylist] = React.useState([]);
+  const [party, setParty] = React.useState([]);
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
@@ -62,9 +77,41 @@ function Search() {
 
   const navigate = useNavigate();
 
+
+  React.useEffect(() => {
+    spotify.getFeaturedPlaylists({limit : 5, offset : 1, country: 'IN'}).then((playlists) => {
+        setPlaylist(playlists.body.playlists.items.map((playlist) => {
+            return {
+                image: playlist.images[0].url,
+                title: playlist.name,
+                id: playlist.id,
+                description: playlist.description,
+                uri : playlist.uri
+            }
+        }));
+    });
+    spotify.getPlaylistsForCategory("party", {
+        limit: 5,
+        offset : 2
+      }).then((playlists) => {
+        setParty(playlists.body.playlists.items.map((playlist) => {
+            return {
+                image: playlist.images[0].url,
+                title: playlist.name,
+                id: playlist.id,
+                description: playlist.description,
+                uri : playlist.uri
+            }
+        }));
+       
+    });
+},[accessToken])
+
+
+
   return (
     <div>
-      <div className=" ml-32 relative  bg-black">
+      <div className=" ml-64 relative  bg-black">
         <div className="text-white w-full  h-16 bg-black 0  -mt-10 flex p-3 fixed">
           <FontAwesomeIcon
             icon={faChevronLeft}
@@ -116,34 +163,8 @@ function Search() {
                 />
               ))}
             </div>
-            {/* <div className="w-96 h-48 bg-red-100 flex mt-48"> */}
+     
 
-            {/* 
-          <div className="relative mt-64">
-    <div className=" flex bg-zinc-800 w-full h-24 fixed bottom-0 left-0 right-0">
-        
-    <div class="player__footer flex ml-48 mt-4">
-
-      <div className="bg-red-100 w-96 h-96">
-        new
-      <SpPlayer accessToken={accessToken} trackUri={playingTrack?.uri} />
- 
-      </div>
-
-
-       
-          <ul class="list list--footer">
-
-                <i class="fa fa-ellipsis-h ml-2 fa-lg" size="lg" color="white"></i>
-             
-                <i class="fa fa-random ml-2 fa-lg" size="lg" color="white"></i>
-             
-                <i class="fa fa-undo ml-2 fa-lg" size="lg" color="white"></i>
-
-          </ul>
-        </div>
-
-        {/* <h4>Lofi Music Player React </h4> */}
           </form>
         </div>
         <div className=" w-1/5 h-3/5 p-5 m-6 ml-24 mt-10  hover: rounded-md ">
@@ -152,10 +173,10 @@ function Search() {
               <div className="text-white text-3xl font-sans font-bold">
                 Browse All
                 <div className="flex space-x-12 mt-5">
+                  {/* <SearchData />
                   <SearchData />
                   <SearchData />
-                  <SearchData />
-                  <SearchData />
+                  <SearchData /> */}
                 </div>
               </div>
             ) : (
@@ -166,6 +187,29 @@ function Search() {
 
         {/* </div> */}
       </div>
+
+
+
+      <div className="flex my-2">
+                {playlist.map((track)=>(
+                    <div key={track.uri} onClick={()=>navigate(`/playlist/${track.id}`, {state : {description : track.description}})}>
+                        <img src={track.image} alt={track.name} />
+                        <p>{track.name}</p>
+                    </div>
+                ))}
+            </div>
+            <div className="flex my-2">
+                {party.map((track)=>(
+                    <div key={track.uri} onClick={()=>navigate(`/playlist/${track.id}`, {state : {description : track.description}})}>
+                        <img src={track.image} alt={track.name} />
+                        <p>{track.name}</p>
+                    </div>
+                ))}
+            </div>
+
+
+
+
       <div className="relative">
         {/* <div className=" flex bg-zinc-800 w-full h-24 fixed bottom-0 left-0 right-0"> */}
 

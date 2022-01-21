@@ -1,5 +1,5 @@
 import React from 'react';
-import Newdata from './mixes.js';
+import Newdata from './Home/HomeData.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -9,8 +9,9 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Search from './.Search_Player';
 
-function Spotify(props) {
+function Spotify1(props) {
   return (
     <div>
       <div className="flex relative">
@@ -28,14 +29,14 @@ function Spotify(props) {
               </Link>
             </div>
           </div>
-          <div className="p-2  font-bold hover:bg-zinc-800 hover:rounded-md ml-3 text-stone-300 antialiased  hover:text-white flex hover:bg-zinc-800 hover:rounded-md">
+          {/* <div className="p-2  font-bold hover:bg-zinc-800 hover:rounded-md ml-3 text-stone-300 antialiased  hover:text-white flex hover:bg-zinc-800 hover:rounded-md">
             <FontAwesomeIcon icon={faSearch} size="lg" color="white" />
             <div className="ml-4">
               <Link to="/search">
                 <button className="font-bold">Search</button>
               </Link>
             </div>
-          </div>
+          </div> */}
           <div className="p-2 font-bold hover:bg-zinc-800 hover:rounded-md ml-2 text-stone-300 antialiased  hover:text-white flex">
             <FontAwesomeIcon icon={faFolderOpen} size="lg" color="white" />
             <div className="ml-4">Your Library</div>
@@ -54,23 +55,14 @@ function Spotify(props) {
           </div>
         </div>
 
-        <div className="bg-gradient-to-b from-red-900 to-black w-full ml-64  ">
-          <div className="text-2xl font-bold hover:bg-zinc-800 hover:rounded-md text-white antialiased m-6 mt-20 ">
-            Your Top Mixes
-          </div>
-
-          <Newdata />
-          <Newdata />
-          <Newdata />
-          <Newdata />
-          <Newdata />
-          <Newdata />
-        </div>
+        <div className="bg-gradient-to-b from-red-900 to-black w-full ml-64  "></div>
       </div>
-      <div className="ml-32">{/* <Search /> */}</div>
-      div
+      <div className="ml-32">
+        <Search />
+      </div>
+    
     </div>
   );
 }
 
-export default Spotify;
+export default Spotify1;

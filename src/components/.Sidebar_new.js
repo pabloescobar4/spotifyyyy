@@ -1,5 +1,5 @@
 import React from 'react';
-import Newdata from './mixes.js';
+import Newdata from './Home/HomeData.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -9,9 +9,9 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import Search from './Searchnew1';
+import Search from './.Search_Player';
 
-function Spotify1(props) {
+function Spot(props) {
   return (
     <div>
       <div className="flex relative">
@@ -29,14 +29,14 @@ function Spotify1(props) {
               </Link>
             </div>
           </div>
-          <div className="p-2  font-bold hover:bg-zinc-800 hover:rounded-md ml-3 text-stone-300 antialiased  hover:text-white flex hover:bg-zinc-800 hover:rounded-md">
+          {/* <div className="p-2  font-bold hover:bg-zinc-800 hover:rounded-md ml-3 text-stone-300 antialiased  hover:text-white flex hover:bg-zinc-800 hover:rounded-md">
             <FontAwesomeIcon icon={faSearch} size="lg" color="white" />
             <div className="ml-4">
               <Link to="/search">
                 <button className="font-bold">Search</button>
               </Link>
             </div>
-          </div>
+          </div> */}
           <div className="p-2 font-bold hover:bg-zinc-800 hover:rounded-md ml-2 text-stone-300 antialiased  hover:text-white flex">
             <FontAwesomeIcon icon={faFolderOpen} size="lg" color="white" />
             <div className="ml-4">Your Library</div>
@@ -65,4 +65,4 @@ function Spotify1(props) {
   );
 }
 
-export default Spotify1;
+export default Spot;
