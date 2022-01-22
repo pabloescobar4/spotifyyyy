@@ -1,20 +1,15 @@
 import React from "react";
-import Newdata from "./Home/HomeData.js";
+// import Newdata from "./Home/HomeData.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faSearch,
   faFolderOpen,
   faPlusSquare,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import SpPlayer from "./ShanPlayer";
 
-const accessToken =
-  "BQDDuyxzDmmeAPmgskhAEBUy-L6PF57ufGTgmrH52oNgxR-iWv2I0_3jacxYnQJr5QDI9xvopJg8QerorPiao1XmYq1Lqjj5cmhG0WHXtCLMbfznTyALiPuz3hxgIkC1UUdzvEJPvigV0-wHIOURxxL2clpxOaCV1ByqQYxJirHH5MIXtb7A8KRbrOfxcA3CerbDXQFjgLY7fDQPGZf5Fw";
-
-function SideBar(props) {
+function SideBar() {
   return (
     <div style={{ width: "16%" }}>
       <div className="flex relative">
