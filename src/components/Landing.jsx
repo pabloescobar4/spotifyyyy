@@ -1,4 +1,3 @@
-import react from "react";
 import{ Navbar } from "./Navbar"
 import{ Footer } from "./Footer"
 export const Landing=()=>{

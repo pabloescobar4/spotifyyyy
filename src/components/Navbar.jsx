@@ -1,18 +1,23 @@
-import react, { useState } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import {GiHamburgerMenu} from "react-icons/gi"
-import { loginUrl}  from './Spotify'
+import { accessUrl,getTokenFromResponse}  from './utils/spotify'
 // import ScrollIntoVie w from "react-scroll-into-view";
-import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import SpotifyWebApi from "spotify-web-api-js";
+import { addTokenSuccess } from "./redux/actions";
+
 
 export const Navbar=()=>{
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = React.useState(false);
+  
 
   return (
     <nav className="sticky top-0 z-20 items-center justify-between p-4 text-xl bg-black md:flex text-white h-16">
       <div className="flex items-center justify-between">
-        <h3 className="font-bold text-2xl ml-0 sm:ml-20"><img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" className="w-20 sm:w-32"/></h3>
-
+        <h3 className="font-bold text-2xl ml-0 sm:ml-20">
+          <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" className="w-20 sm:w-32" alt="spotifyLogo" />
+        </h3>
         {showNav ? (
           <AiOutlineClose
             onClick={() => setShowNav(!showNav)}
@@ -48,7 +53,7 @@ export const Navbar=()=>{
         <div className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Sign in</div>
         </div>
         <div>
-        <Link to = {"/login"} className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</Link>
+        <a href= {accessUrl} className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</a>
         </div>
       </ul>
     </nav>
