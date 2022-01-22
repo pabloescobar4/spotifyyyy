@@ -15,21 +15,13 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { useNavigate } from "react-router-dom";
 import SearchData from "./Search/SearchData";
 
-
-
-
-
-
 const spotify = new SpotifyWebApi({
   clientId: "4ecfc05c92c4453aaf10ea23d7553452",
 });
 function Search() {
-
-
   const accessToken =
     "BQBFWtqt9kOzGQz5XGBUgIoRL080AjwZ9fG7mk7LBk3-i9Fu4U4ooys0iPqkWEWsTWZnrELSYufKASTrEudcVL7S7lS2GjROTbcEwGKLsjG-_FSFu_g4oyOfRGBtI-h4AsnOOtGpnvE_MGGgTlaSGwck0HbH1tXUU0IbucK-Y-VwFP-C0mEYscaVNk8o2JartnhEsx_-zP0RQxmo-GLptQ";
   const [search, setSearch] = React.useState("");
-
 
   const [playingTrack, setPlayingTrack] = React.useState();
   const [searchResults, setSearchResults] = React.useState([]);
@@ -77,37 +69,41 @@ function Search() {
 
   const navigate = useNavigate();
 
-
   React.useEffect(() => {
-    spotify.getFeaturedPlaylists({limit : 5, offset : 1, country: 'IN'}).then((playlists) => {
-        setPlaylist(playlists.body.playlists.items.map((playlist) => {
+    spotify
+      .getFeaturedPlaylists({ limit: 5, offset: 1, country: "IN" })
+      .then((playlists) => {
+        setPlaylist(
+          playlists.body.playlists.items.map((playlist) => {
             return {
-                image: playlist.images[0].url,
-                title: playlist.name,
-                id: playlist.id,
-                description: playlist.description,
-                uri : playlist.uri
-            }
-        }));
-    });
-    spotify.getPlaylistsForCategory("party", {
+              image: playlist.images[0].url,
+              title: playlist.name,
+              id: playlist.id,
+              description: playlist.description,
+              uri: playlist.uri,
+            };
+          })
+        );
+      });
+    spotify
+      .getPlaylistsForCategory("party", {
         limit: 5,
-        offset : 2
-      }).then((playlists) => {
-        setParty(playlists.body.playlists.items.map((playlist) => {
+        offset: 2,
+      })
+      .then((playlists) => {
+        setParty(
+          playlists.body.playlists.items.map((playlist) => {
             return {
-                image: playlist.images[0].url,
-                title: playlist.name,
-                id: playlist.id,
-                description: playlist.description,
-                uri : playlist.uri
-            }
-        }));
-       
-    });
-},[accessToken])
-
-
+              image: playlist.images[0].url,
+              title: playlist.name,
+              id: playlist.id,
+              description: playlist.description,
+              uri: playlist.uri,
+            };
+          })
+        );
+      });
+  }, [accessToken]);
 
   return (
     <div>
@@ -163,8 +159,6 @@ function Search() {
                 />
               ))}
             </div>
-     
-
           </form>
         </div>
         <div className=" w-1/5 h-3/5 p-5 m-6 ml-24 mt-10  hover: rounded-md ">
@@ -188,27 +182,36 @@ function Search() {
         {/* </div> */}
       </div>
 
-
-
       <div className="flex my-2">
-                {playlist.map((track)=>(
-                    <div key={track.uri} onClick={()=>navigate(`/playlist/${track.id}`, {state : {description : track.description}})}>
-                        <img src={track.image} alt={track.name} />
-                        <p>{track.name}</p>
-                    </div>
-                ))}
-            </div>
-            <div className="flex my-2">
-                {party.map((track)=>(
-                    <div key={track.uri} onClick={()=>navigate(`/playlist/${track.id}`, {state : {description : track.description}})}>
-                        <img src={track.image} alt={track.name} />
-                        <p>{track.name}</p>
-                    </div>
-                ))}
-            </div>
-
-
-
+        {playlist.map((track) => (
+          <div
+            key={track.uri}
+            onClick={() =>
+              navigate(`/playlist/${track.id}`, {
+                state: { description: track.description, image: track.image },
+              })
+            }
+          >
+            <img src={track.image} alt={track.name} />
+            <p>{track.name}</p>
+          </div>
+        ))}
+      </div>
+      <div className="flex my-2">
+        {party.map((track) => (
+          <div
+            key={track.uri}
+            onClick={() =>
+              navigate(`/playlist/${track.id}`, {
+                state: { description: track.description, image: track.image },
+              })
+            }
+          >
+            <img src={track.image} alt={track.name} />
+            <p>{track.name}</p>
+          </div>
+        ))}
+      </div>
 
       <div className="relative">
         {/* <div className=" flex bg-zinc-800 w-full h-24 fixed bottom-0 left-0 right-0"> */}

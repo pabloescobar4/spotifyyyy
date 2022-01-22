@@ -9,7 +9,7 @@ export const Playlistpage = () => {
     const [songs, setSongs] = React.useState([]);
     const { id } = useParams();
     const state = useLocation();
-    const {description} = state.state;
+    const {description,image} = state.state;
     const token = "BQBFWtqt9kOzGQz5XGBUgIoRL080AjwZ9fG7mk7LBk3-i9Fu4U4ooys0iPqkWEWsTWZnrELSYufKASTrEudcVL7S7lS2GjROTbcEwGKLsjG-_FSFu_g4oyOfRGBtI-h4AsnOOtGpnvE_MGGgTlaSGwck0HbH1tXUU0IbucK-Y-VwFP-C0mEYscaVNk8o2JartnhEsx_-zP0RQxmo-GLptQ";
     spotify.setAccessToken(token);
     React.useEffect(() => {
@@ -31,6 +31,7 @@ export const Playlistpage = () => {
     return (
         songs.length > 0 ? <div style={{backgroundColor:"#632626",color:"#fff"}}>
             <div>{description}</div>
+            <img src = {image} alt="playlistimg"/>
             {songs.map((song,i) => {
                 return (
                     <div style={{display: 'flex', justifyContent : "space-around", cursor : 'pointer'}} key={song.uri} className="songs" onClick={()=>console.log(song.track)}>
