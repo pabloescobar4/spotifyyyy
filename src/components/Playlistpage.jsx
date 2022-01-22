@@ -92,7 +92,7 @@ export const Playlistpage = () => {
             })}
         </div>
         <div className=" left-0 bottom-0 w-screen  fixed">
-            <SpPlayer trackUri={playingTrack?.uri} />
+            <SpPlayer trackUri={playingTrack?.uri} token={token} />
         </div>
     </div>
     )

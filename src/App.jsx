@@ -46,37 +46,6 @@ function App() {
     <div className="bg-black">
       <div className="">
         <Routes>
-          {/* <Route
-            path="/search"
-            element={
-              <div> */}
-                {/* <A1 /> */}
-                {/* <Spotify1 /> */}
-                {/* <FinalPlayer /> */}
-                {/* <Player1
-        currentSongIndex={currentSongIndex}
-        setCurrentSongIndex={setCurrentSongIndex}
-        nextSongIndex={nextSongIndex}
-        songs={songs}
-      /> */}
-              {/* </div> */}
-            {/* } */}
-          {/* /> */}
-          {/* <Route
-            path="/"
-            element={
-              <div> */}
-                {/* <Spot /> */}
-                {/* <Player
-        currentSongIndex={currentSongIndex}
-        setCurrentSongIndex={setCurrentSongIndex}
-        nextSongIndex={nextSongIndex}
-        songs={songs}
-      /> */}
-              {/* </div>
-            }
-          /> */}
-          {/* <Route path="/" /> */}
           <Route
             path="/playlist/:id"
             element={

@@ -261,7 +261,7 @@ function Search() {
 
       <div className=" left-0 bottom-0 w-screen  fixed">
         {/* newgsdfgvvbdfzvvdavadfv dfv  zxvvd dsfvca */}
-        <SpPlayer trackUri={playingTrack?.uri} />
+        <SpPlayer trackUri={playingTrack?.uri} accessToken={accessToken} />
       </div>
       {/* </div> */}
     </div>
