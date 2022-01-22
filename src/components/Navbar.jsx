@@ -1,17 +1,18 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import {GiHamburgerMenu} from "react-icons/gi"
-import { accessUrl,getTokenFromResponse}  from './utils/spotify'
+import { accessUrl } from './utils/spotify';
+import { TokenContext } from "./Contexts/TokenContext";
+// import { useSelector } from "react-redux";
+
 // import ScrollIntoVie w from "react-scroll-into-view";
-import { useDispatch } from "react-redux";
-import SpotifyWebApi from "spotify-web-api-js";
-import { addTokenSuccess } from "./redux/actions";
 
 
 export const Navbar=()=>{
   const [showNav, setShowNav] = React.useState(false);
-  
-
+  const { token } = React.useContext(TokenContext);
+  // const { token } = useSelector((state) => ({ token: state.token }));
+  // console.log(token);
   return (
     <nav className="sticky top-0 z-20 items-center justify-between p-4 text-xl bg-black md:flex text-white h-16">
       <div className="flex items-center justify-between">
@@ -49,12 +50,13 @@ export const Navbar=()=>{
         <div>
         <div className="">{showNav ? "—" : "|"}</div>
         </div>
-        <div>
-        <div className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Sign in</div>
-        </div>
-        <div>
-        <a href= {accessUrl} className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</a>
-        </div>
+
+        {token ? <div>Welcome</div> : <div>
+          <div className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Sign Up</div>
+        </div>}
+        {!token  ? <div>
+          <a href= {accessUrl} className={(showNav ? "font-light":"font-bold")+" cursor-pointer hover:text-green-500"}>Log in</a>
+        </div> : null}
       </ul>
     </nav>
   );

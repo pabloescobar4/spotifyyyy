@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import SpotifyPlayer from "react-spotify-web-playback"
+import {useSelector} from "react-redux"
 
 
-
-export default function SpPlayer({ accessToken, trackUri }) {
+export default function SpPlayer({trackUri }) {
   const [play, setPlay] = useState(false)
-    // console.log(accessToken);
+  // const accessToken = localStorage.getItem("token");
+  const {accessToken} = useSelector((state) => ({ accessToken: state.token }));
   useEffect(() => setPlay(true), [trackUri])
-  //console.log(accessToken);
+  console.log(accessToken);
   if (!accessToken) return null
   return (
 

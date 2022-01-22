@@ -1,22 +1,22 @@
-import React from 'react';
-import Newdata from './Home/HomeData.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import Newdata from "./Home/HomeData.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faSearch,
   faFolderOpen,
   faPlusSquare,
   faHeart,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import SpPlayer from './ShanPlayer'
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import SpPlayer from "./ShanPlayer";
 
 const accessToken =
-"BQDDuyxzDmmeAPmgskhAEBUy-L6PF57ufGTgmrH52oNgxR-iWv2I0_3jacxYnQJr5QDI9xvopJg8QerorPiao1XmYq1Lqjj5cmhG0WHXtCLMbfznTyALiPuz3hxgIkC1UUdzvEJPvigV0-wHIOURxxL2clpxOaCV1ByqQYxJirHH5MIXtb7A8KRbrOfxcA3CerbDXQFjgLY7fDQPGZf5Fw";
+  "BQDDuyxzDmmeAPmgskhAEBUy-L6PF57ufGTgmrH52oNgxR-iWv2I0_3jacxYnQJr5QDI9xvopJg8QerorPiao1XmYq1Lqjj5cmhG0WHXtCLMbfznTyALiPuz3hxgIkC1UUdzvEJPvigV0-wHIOURxxL2clpxOaCV1ByqQYxJirHH5MIXtb7A8KRbrOfxcA3CerbDXQFjgLY7fDQPGZf5Fw";
 
 function SideBar(props) {
   return (
-    <div>
+    <div style={{ width: "16%" }}>
       <div className="flex relative">
         <div className="w-2/12 h-full bg-black mb-2 text-gray-100 p-6 fixed ">
           <img
@@ -62,7 +62,7 @@ function SideBar(props) {
           {/* <div className="text-2xl font-bold hover:bg-white hover:rounded-md text-white antialiased m-6 mt-20 ">
             Your Top Mixes
           </div> */}
-{/* 
+          {/* 
           <Newdata />
           <Newdata />
           <Newdata />
@@ -85,7 +85,6 @@ function SideBar(props) {
 }
 
 export default SideBar;
-
 
 //  1 sidebar  2 player 3  homedata
 // //  sidebar player 4 SearchData

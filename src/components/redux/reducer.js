@@ -5,6 +5,7 @@ const init = { token: "", isLogin: false };
 export const reducer = (state = init, { type, payload }) => {
   switch (type) {
     case ADD_TOKEN_SUCCESS:
+      console.log(payload, "token", state);
       return {
         ...state,
         token: payload,

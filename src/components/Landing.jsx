@@ -1,6 +1,10 @@
 import{ Navbar } from "./Navbar"
-import{ Footer } from "./Footer"
-export const Landing=()=>{
+import { Footer } from "./Footer"
+import React from "react"
+import { TokenContext } from "./Contexts/TokenContext";
+import {Link } from "react-router-dom";
+export const Landing = () => {
+    const { token } = React.useContext(TokenContext);
     return (
      <div>
          <Navbar />
@@ -10,7 +14,7 @@ export const Landing=()=>{
             <div className="text-[70px] text-green-500 font-bold leading-none text-right mr-8 sm:mr-48 sm:text-[150px]">everything</div>
             <div className="text-green-500 mt-8 px-20 text-center text-xl">Millions of songs and podcasts. No credit card needed.</div>
             <div className="text-center">
-            <button className="bg-green-500 py-4 px-8 rounded-full m-8 text-blue-700 font-bold hover:scale-105">GET SPOTIFY FREE</button>
+            {token ? <Link to="/"><button className="bg-green-500 py-4 px-8 rounded-full m-8 text-blue-700 font-bold hover:scale-105">Open Web Player</button></Link> : <button className="bg-green-500 py-4 px-8 rounded-full m-8 text-blue-700 font-bold hover:scale-105">Login</button>}
             </div>
         </div>
         <Footer />

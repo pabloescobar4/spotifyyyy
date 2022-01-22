@@ -16,12 +16,13 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import { Landing } from "./components/Landing";
 import { useDispatch } from "react-redux";
 import { getTokenFromResponse}  from './components/utils/spotify'
-
+import {TokenContext} from "./components/Contexts/TokenContext"
 import SpotifyWebApi from "spotify-web-api-js";
 import { addTokenSuccess } from "./components/redux/actions";
 
 function App() {
- const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { handleToken } = React.useContext(TokenContext);
   const dispatch = useDispatch();
     const spotify = new SpotifyWebApi();
     React.useEffect(() => {
@@ -29,14 +30,15 @@ function App() {
       const hash = getTokenFromResponse();
       window.location.hash = "";
       let _token = hash.access_token;
+      // console.log("token",_token);
       _token ? collectToken(_token) : <div>Incorrect Login credentials</div>;
     }, []);
     
-    const collectToken = (token) => {
+  const collectToken = (token) => {
+      // console.log(token);
       spotify.setAccessToken(token);
+      handleToken(token);
       dispatch(addTokenSuccess(token));
-      console.log(token);
-      navigate("/welcome");
     }
 
   return (
@@ -44,10 +46,10 @@ function App() {
     <div className="bg-black">
       <div className="">
         <Routes>
-          <Route
+          {/* <Route
             path="/search"
             element={
-              <div>
+              <div> */}
                 {/* <A1 /> */}
                 {/* <Spotify1 /> */}
                 {/* <FinalPlayer /> */}
@@ -57,13 +59,13 @@ function App() {
         nextSongIndex={nextSongIndex}
         songs={songs}
       /> */}
-              </div>
-            }
-          />
-          <Route
+              {/* </div> */}
+            {/* } */}
+          {/* /> */}
+          {/* <Route
             path="/"
             element={
-              <div>
+              <div> */}
                 {/* <Spot /> */}
                 {/* <Player
         currentSongIndex={currentSongIndex}
@@ -71,14 +73,14 @@ function App() {
         nextSongIndex={nextSongIndex}
         songs={songs}
       /> */}
-              </div>
+              {/* </div>
             }
-          />
-
+          /> */}
+          {/* <Route path="/" /> */}
           <Route
             path="/playlist/:id"
             element={
-              <div>
+              <div style={{display: 'flex', width : "100%"}}>
                 <SideBar />
                 <Playlistpage />
               </div>
@@ -88,9 +90,9 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-                <div>
+                <div style={{display: 'flex', width : "100%"}}>
                   <SideBar />
-                  <A2 />
+                  {/* <A2 /> */}
                   <A1 />
                 </div>
               </PrivateRoute>
