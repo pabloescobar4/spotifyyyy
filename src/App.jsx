@@ -1,15 +1,14 @@
 import React from "react";
 // import { useState, useEffect } from "react";
 import "./Player.css";
-
 // import Player1 from "./components/Player1";
 import SideBar from "./components/SideBar";
 // import Spotify1 from "./components/B1";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 // import Search from "./components/.Search_Player";
 // import FinalPlayer from "./components/Player/FinalPlayer";
 // import Spot from "./components/.Sidebar_new";
-import A2 from "./components/.Player_Only";
+// import A2 from "./components/.Player_Only";
 import A1 from "./components/.Search_Player";
 import { Playlistpage } from "./components/Playlistpage";
 import { PrivateRoute } from "./components/PrivateRoute";
@@ -21,7 +20,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { addTokenSuccess } from "./components/redux/actions";
 
 function App() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { handleToken } = React.useContext(TokenContext);
   const dispatch = useDispatch();
     const spotify = new SpotifyWebApi();
