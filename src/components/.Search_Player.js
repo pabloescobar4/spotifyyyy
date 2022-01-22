@@ -15,11 +15,18 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchData from "./Search/SearchData";
+import { Dropdown } from "./Dropdown";
 
 const spotify = new SpotifyWebApi({
   clientId: "4ecfc05c92c4453aaf10ea23d7553452",
 });
 function Search() {
+  function MouseOver(event) {
+    event.target.style.background = '#424242';
+  }
+  function MouseOut(event){
+    event.target.style.background="";
+  }
   // const accessToken = localStorage.getItem("token");
   const [search, setSearch] = React.useState("");
   const { accessToken } = useSelector((state) => ({
@@ -119,6 +126,7 @@ function Search() {
         color: "white",
       }}
     >
+      
       <div className=" relative  bg-black" style={{ margin: "55px 0" }}>
         <div className="text-white w-full  h-16 bg-black 0  -mt-10 flex p-3 fixed">
           <FontAwesomeIcon
@@ -174,9 +182,10 @@ function Search() {
               </div>
             ) : null}
           </form>
+          <div className="fixed top-10 right-0"><Dropdown/></div>
         </div>
       </div>
-
+      
       {!search ? (
         <div style={{ margin: "20px 0" }}>
           <h1
@@ -201,14 +210,14 @@ function Search() {
                     },
                   })
                 }
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer",paddingTop:"8px",borderRadius:"5px"}} onMouseOver={MouseOver} onMouseOut={MouseOut}
               >
                 <img
                   src={track.image}
                   alt={track.name}
-                  style={{ width: "75%" }}
+                  style={{ width: "75%",margin:"auto"}}
                 />
-                <p style={{ marginLeft: "10px" }}>{track.title}</p>
+                <p style={{ marginLeft: "30px" }} >{track.title}</p>
               </div>
             ))}
           </div>
@@ -240,14 +249,14 @@ function Search() {
                     },
                   })
                 }
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer",paddingTop:"8px",borderRadius:"5px"}} onMouseOver={MouseOver} onMouseOut={MouseOut}
               >
                 <img
                   src={track.image}
                   alt={track.name}
-                  style={{ width: "75%" }}
+                  style={{ width: "75%",margin:"auto"}}
                 />
-                <p style={{ marginLeft: "10px" }}>{track.title}</p>
+                <p style={{ marginLeft: "30px" }}>{track.title}</p>
               </div>
             ))}
           </div>
@@ -264,6 +273,7 @@ function Search() {
         <SpPlayer trackUri={playingTrack?.uri} />
       </div>
       {/* </div> */}
+      
     </div>
   );
 }

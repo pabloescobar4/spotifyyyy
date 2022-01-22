@@ -49,8 +49,8 @@ function App() {
             path="/playlist/:id"
             element={
               <div style={{display: 'flex', width : "100%"}}>
-                <SideBar />
-                <Playlistpage />
+                <SideBar/>
+                <Playlistpage/>
               </div>
             }
           />
@@ -73,6 +73,9 @@ function App() {
         {/* <Spotify /> */}
       </div>
     </div>
+    
+      
+
   );
 }
 
