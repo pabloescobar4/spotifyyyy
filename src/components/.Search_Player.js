@@ -184,7 +184,7 @@ function Search() {
             ) : null}
           </form>
           <div className="fixed top-10 right-0">
-            <Dropdown />
+            <Dropdown/>
           </div>
         </div>
       </div>
