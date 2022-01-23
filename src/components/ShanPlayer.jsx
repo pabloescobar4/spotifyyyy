@@ -14,7 +14,7 @@ export default function SpPlayer() {
 
     <div className="bg-red-100 ">
   <SpotifyPlayer
-      token="BQCCMVmsraqJt9gNkphZY6-iyZCn2OHlGcBdkEammls01sWFCIPJ0qh8CWeZx_V3XE3_KZzTcp0JuVKP1Za5PA9EcwdPhEbI1MIADQb5oTprWIEBlGYrDxMSpFhnV70O1dHBzVg1-O_u-hn39mLH-IhpCT1Mp29Wt_VNE38YIOQZ0C-knnOB5Ho3ToqLt96czg08PyKagLTHyfnRTHa-Vw"
+      token="BQDmMiTGxxewSn0T5c2m1zn6RL1Jl0829QvZemcjnxaHvvsKJfP--WhdxJa2_X4vcjqklWHTT2ZPRTvPSOxf_NsJ4fPlbTU_9sQ1JvbngJH3Brg0BI_1FjcMsERDo1I6zaFom8QYvZsFkfitTPByP-7U0uk4UDwBn4hhCiMu83JPZsBVKQXf5_QLFkj7WTZzcujCAeY1iBUTmOkpvauKOA"
       showSaveIcon
       callback={state => {
         if (!state.isPlaying) setPlay(false)
