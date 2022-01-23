@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import {useSelector} from"react-redux";
-// import {TokenContext} from "./Contexts/TokenContext";
+// import {useSelector} from"react-redux";
+import {TokenContext} from "./Contexts/TokenContext";
 
 export const PrivateRoute = ({children}) => {
     //  const { token } = useSelector((state) => ({ token: state.token }));
@@ -9,8 +9,9 @@ export const PrivateRoute = ({children}) => {
     localStorage.setItem("token","abcd")
     const token = localStorage.getItem("token");
     //  console.log("cookie", window.cookies.access_token);
-    if (token.length === 0) {
-        // console.log(token);
+
+    if (!token) {
+        console.log(token);
         return <Navigate to={"/welcome"}/>
     }
     return children;

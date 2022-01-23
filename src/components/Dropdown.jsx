@@ -1,8 +1,12 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import {addTokenSuccess} from "./redux/actions"
 
-export const Dropdown=()=>{
+export const Dropdown = () => {
+    const dispatch = useDispatch();
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
       }
@@ -55,16 +59,18 @@ export const Dropdown=()=>{
                     </Menu.Item>
                     
                       <Menu.Item>
-                        {({ active }) => (
-                          <button
+                {({ active }) => (
+                  
+                    <Link to={`/welcome`}><button
                             type="submit"
                             className={classNames(
                               active ? 'bg-gray-900 text-white' : 'text-white',
                               'block w-full text-left px-4 py-2 text-sm'
                             )}
+                            onClick={() =>dispatch(addTokenSuccess(""))}
                           >
                             Log out
-                          </button>
+                          </button></Link>
                         )}
                       </Menu.Item>
                    

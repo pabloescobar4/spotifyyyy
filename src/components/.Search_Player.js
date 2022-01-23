@@ -13,26 +13,28 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SpotifyWebApi from "spotify-web-api-node";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SearchData from "./Search/SearchData";
 import { Dropdown } from "./Dropdown";
+import { addTrackSuccess } from "./redux/actions";
 
 const spotify = new SpotifyWebApi({
-  clientId: "4ecfc05c92c4453aaf10ea23d7553452",
+  clientId: "8fe4c46b800e46518fd2bfca5a389378",
 });
 function Search() {
   function MouseOver(event) {
-    event.target.style.background = '#424242';
+    event.target.style.background = "#424242";
   }
-  function MouseOut(event){
-    event.target.style.background="";
+  function MouseOut(event) {
+    event.target.style.background = "";
   }
   // const accessToken = localStorage.getItem("token");
   const [search, setSearch] = React.useState("");
   const { accessToken } = useSelector((state) => ({
     accessToken: state.token,
   }));
-  console.log(accessToken, "djbbjh");
+  // console.log(accessToken, "djbbjh");
+  const dispatch = useDispatch();
 
   const [playingTrack, setPlayingTrack] = React.useState();
   const [searchResults, setSearchResults] = React.useState([]);
@@ -42,7 +44,8 @@ function Search() {
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
-    console.log(track);
+    dispatch(addTrackSuccess(track.uri));
+    // console.log(track);
     setSearch("");
   };
 
@@ -84,7 +87,6 @@ function Search() {
     spotify
       .getFeaturedPlaylists({ limit: 5, offset: 1, country: "IN" })
       .then((playlists) => {
-        console.log(playlists.body.playlists.items[0].name);
         setPlaylist(
           playlists.body.playlists.items.map((playlist) => {
             return {
@@ -126,7 +128,6 @@ function Search() {
         color: "white",
       }}
     >
-      
       <div className=" relative  bg-black" style={{ margin: "55px 0" }}>
         <div className="text-white w-full  h-16 bg-black 0  -mt-10 flex p-3 fixed">
           <FontAwesomeIcon
@@ -182,16 +183,18 @@ function Search() {
               </div>
             ) : null}
           </form>
-          <div className="fixed top-10 right-0"><Dropdown/></div>
+          <div className="fixed top-10 right-0">
+            <Dropdown />
+          </div>
         </div>
       </div>
-      
+
       {!search ? (
         <div style={{ margin: "20px 0" }}>
           <h1
             style={{
               color: "white",
-              margin: "80px 0 0 15px",
+              margin: "80px 0 0 27px",
               fontSize: "30px",
             }}
           >
@@ -210,14 +213,20 @@ function Search() {
                     },
                   })
                 }
-                style={{ cursor: "pointer",paddingTop:"8px",borderRadius:"5px"}} onMouseOver={MouseOver} onMouseOut={MouseOut}
+                style={{
+                  cursor: "pointer",
+                  paddingTop: "8px",
+                  borderRadius: "5px",
+                }}
+                onMouseOver={MouseOver}
+                onMouseOut={MouseOut}
               >
                 <img
                   src={track.image}
                   alt={track.name}
-                  style={{ width: "75%",margin:"auto"}}
+                  style={{ width: "70%", margin: "auto" }}
                 />
-                <p style={{ marginLeft: "30px" }} >{track.title}</p>
+                <p style={{ marginLeft: "40px" }}>{track.title}</p>
               </div>
             ))}
           </div>
@@ -230,7 +239,7 @@ function Search() {
           <h2
             style={{
               color: "white",
-              margin: "20px 0 0 15px",
+              margin: "5px 0 0 27px",
               fontSize: "30px",
             }}
           >
@@ -249,14 +258,20 @@ function Search() {
                     },
                   })
                 }
-                style={{ cursor: "pointer",paddingTop:"8px",borderRadius:"5px"}} onMouseOver={MouseOver} onMouseOut={MouseOut}
+                style={{
+                  cursor: "pointer",
+                  paddingTop: "8px",
+                  borderRadius: "5px",
+                }}
+                onMouseOver={MouseOver}
+                onMouseOut={MouseOut}
               >
                 <img
                   src={track.image}
                   alt={track.name}
-                  style={{ width: "75%",margin:"auto"}}
+                  style={{ width: "70%", margin: "auto" }}
                 />
-                <p style={{ marginLeft: "30px" }}>{track.title}</p>
+                <p style={{ marginLeft: "40px" }}>{track.title}</p>
               </div>
             ))}
           </div>
@@ -264,16 +279,13 @@ function Search() {
       ) : (
         <div className="bg-black" style={{ height: "80vh" }}></div>
       )}
+      {/* <div className=" left-0 bottom-0 w-screen  fixed">
+        <SpPlayer trackUri={playingTrack?.uri} accessToken={accessToken} />
+      </div> */}
 
       {/* <div className="relative"> */}
       {/* <div className=" flex bg-zinc-800 w-full h-24 fixed bottom-0 left-0 right-0"> */}
-
-      <div className=" left-0 bottom-0 w-screen  fixed">
-        {/* newgsdfgvvbdfzvvdavadfv dfv  zxvvd dsfvca */}
-        <SpPlayer trackUri={playingTrack?.uri} />
-      </div>
       {/* </div> */}
-      
     </div>
   );
 }

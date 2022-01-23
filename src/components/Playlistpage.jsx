@@ -1,19 +1,20 @@
 import React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import { useParams, useLocation,useNavigate } from "react-router-dom";
-import { useSelector} from "react-redux";
-import SpPlayer from "./ShanPlayer";
+import { useSelector,useDispatch} from "react-redux";
 import {
     faChevronLeft,
     faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { addTrackSuccess } from "./redux/actions";
 const spotify = new SpotifyWebApi({
     clientId: "8fe4c46b800e46518fd2bfca5a389378"
 });
 export const Playlistpage = () => {
     const [songs, setSongs] = React.useState([]);
-    const [playingTrack,setPlayingTrack] = React.useState("");
+    const [playingTrack, setPlayingTrack] = React.useState("");
+    const dispatch = useDispatch();
     const { id } = useParams();
     const state = useLocation();
     const navigate = useNavigate();
@@ -21,7 +22,6 @@ export const Playlistpage = () => {
     const { token } = useSelector((state) => ({
         token: state.token,
     }));
-    console.log(token)
     spotify.setAccessToken(token);
     React.useEffect(() => {
         spotify.getPlaylistTracks(id).then((tracks) => {
@@ -76,7 +76,7 @@ export const Playlistpage = () => {
                 </div>
             {songs.map((song,i) => {
                 return (
-                    <div style={{display: 'flex', justifyContent : "space-around", cursor : 'pointer', margin : "10px 0"}} key={song.uri} className="songs" onClick={()=>setPlayingTrack(song.track)}>
+                    <div style={{display: 'flex', justifyContent : "space-around", cursor : 'pointer', margin : "10px 0"}} key={song.uri} className="songs" onClick={()=>dispatch(addTrackSuccess(song.track))}>
                         <p>{i + 1}</p>
                         <div>
                             <img src={song.playerImage} alt="songimage"/>
@@ -91,9 +91,7 @@ export const Playlistpage = () => {
                 )
             })}
         </div>
-        <div className=" left-0 bottom-0 w-screen  fixed">
-            <SpPlayer trackUri={playingTrack?.uri} />
-        </div>
+        
     </div>
     )
 }

@@ -18,6 +18,7 @@ import { getTokenFromResponse}  from './components/utils/spotify'
 import {TokenContext} from "./components/Contexts/TokenContext"
 import SpotifyWebApi from "spotify-web-api-js";
 import { addTokenSuccess } from "./components/redux/actions";
+import SpPlayer from "./components/ShanPlayer";
 
 function App() {
   // const navigate = useNavigate();
@@ -50,7 +51,10 @@ function App() {
             element={
               <div style={{display: 'flex', width : "100%"}}>
                 <SideBar/>
-                <Playlistpage/>
+                <Playlistpage />
+                <div className=" left-0 bottom-0 w-screen  fixed">
+                  <SpPlayer/>
+                </div>
               </div>
             }
           />
@@ -62,6 +66,9 @@ function App() {
                   <SideBar />
                   {/* <A2 /> */}
                   <A1 />
+                  <div className=" left-0 bottom-0 w-screen  fixed">
+                      <SpPlayer/>
+                  </div>
                 </div>
               </PrivateRoute>
             }

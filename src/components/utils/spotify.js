@@ -9,6 +9,9 @@ const scopes = [
   "user-read-playback-state",
   "user-top-read",
   "streaming",
+  "user-library-read",
+  "user-library-modify",
+  "user-read-email",
   "user-modify-playback-state",
 ];
 

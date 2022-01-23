@@ -7,8 +7,6 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./components/redux/store";
 import { TokenContextProvider } from "./components/Contexts/TokenContext";
 
-console.log(store);
-
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
