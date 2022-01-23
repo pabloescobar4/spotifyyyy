@@ -24,6 +24,7 @@
     "react-scripts": "5.0.0",
     "react-spotify-web-playback": "^0.9.1",
     "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "spotify-web-api-js": "^1.5.2",
     "spotify-web-api-node": "^5.0.2",
