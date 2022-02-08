@@ -13,7 +13,7 @@ const spotify = new SpotifyWebApi({
 });
 export const Playlistpage = () => {
     const [songs, setSongs] = React.useState([]);
-    const [playingTrack, setPlayingTrack] = React.useState("");
+    // const [playingTrack, setPlayingTrack] = React.useState("");
     const dispatch = useDispatch();
     const { id } = useParams();
     const state = useLocation();
