@@ -22,7 +22,7 @@ function Search(){
 		clientId: "4ecfc05c92c4453aaf10ea23d7553452"
 	});
 
-	const accessToken = "BQCftuA2eWKMo0XJVGozzQ8LOwT5NS6rt16tR9pHSVTjPPjPJnVtjmdeHLkkOYccpYzOPagccvnpoXxG3XhlRyqJclGtyWIopA3wFseLrVCTsjnz7HSCOjILRIaUHTvHbw4gbEbV3Zwitv7oTE8CnAt6I0s6ShtFRRUfNSK76KYNmowXgWCYCrNMeM91VBVyFnPB6QIFpsg6XcvQxU7udA";
+	const accessToken = "BQBUoRUFI_DGH4w0NBDDPoLaZ8TA5DPnQl09Q-SX_l_oX8jAgNZJNOum5G7lPnwN2YUTyzfmzAeq2byO4_5qswZ2SRTf2uIXUH1dBooyjaaT-tUWA0kah6PEnGV8sKRGFF1Ivk-PBMuzom2lQMrXjJuR95tyzHZKosAs-BfRToDKpZhLBkSM45ZK0lZ9SCc43hgWQ92DX39CNRGA8DiJoQ";
     const [search, setSearch] = React.useState("");
     const [playingTrack, setPlayingTrack] = React.useState()
     const [searchResults, setSearchResults] = React.useState([]);

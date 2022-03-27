@@ -3,7 +3,7 @@ import SpPlayer from '../ShanPlayer'
 function FinalPlayer(){
 
 	const accessToken =
-"BQCFyrcbPNExcxHuFfrJEgplVcHzJC-mgrj5E0E4kdodHEQW2YqN2hGCuudeH-x6kF24jz5QEqzQwwTYo4LwuheSOiPPBgM6RP9xpWDQJ2IbpX74jbaN-LzBri-ytfcTpMkfcX4UtXlM7Ndc48NesFYw3vH1IQBZOEgbOCG-_Ps5_vWyJCCkp14YkfIUNkVYkbeZpxf8s-wT8Q0kvx9y0w";
+"BQBUoRUFI_DGH4w0NBDDPoLaZ8TA5DPnQl09Q-SX_l_oX8jAgNZJNOum5G7lPnwN2YUTyzfmzAeq2byO4_5qswZ2SRTf2uIXUH1dBooyjaaT-tUWA0kah6PEnGV8sKRGFF1Ivk-PBMuzom2lQMrXjJuR95tyzHZKosAs-BfRToDKpZhLBkSM45ZK0lZ9SCc43hgWQ92DX39CNRGA8DiJoQ";
 
 	return(
 		<div className="relative">
